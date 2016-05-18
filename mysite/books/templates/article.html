@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block sidebar %}
+<ul>
+    <li><a href="/articles/all">Blogs</a></li>
+</ul>
+{% endblock %}
+
+{% block content %}
+    
+{% if article.thumbnail %}
+{% endif %}
+ <div id="modal-01" class="reveal-modal">
+
+		   <img class="scale-with-grid" src="/static/{{article.thumbnail}}"  alt="" />
+
+		   <div class="description-box">
+                    <h1>{{article.title}}</h1>
+                  <p style="background-color:white;"><font color="brown">{{article.body}}</font></p>
+                     <p>{{article.likes}}   ...people liked this article   <a href="http://127.0.0.1:8000/articles/like/{{article.id}}/"><button type="button">LIKE</button></a> </p>
+                     <p><div id="comment_form">
+    
+  
+    
+</div></p>
+                     <p><div class="fb-comments" data-href="http://127.0.0.1:8000/articles/like/{{article.id}}/" data-numposts="5"></div></p>
+                     <p><div class="fb-like" data-href="http://127.0.0.1:8000/articles/like/{{article.id}}" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div></p>
+                     <p></div>
+
+<div id="commentbackground">
+
+<p id="para"></p>
+
+
+
+<form>
+<textarea id="words" rows="10" cols="20">Enter comment</textarea>
+<input type="button" onclick="getwords()" value="Enter" />
+</form>
+
+<script type="text/javascript">
+function getwords(){
+text = words.value;
+document.getElementById("para").innerHTML = text
+document.getElementById("words").innerHTML = "enter"
+}
+</script>
+<div id="disqus_thread"></div>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // REQUIRED CONFIGURATION VARIABLE: EDIT THE SHORTNAME BELOW
+        var d = document, s = d.createElement('script');
+        
+        s.src = '//article.disqus.com/embed.js';  // IMPORTANT: Replace EXAMPLE with your forum shortname!
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://127.0.0.1:8000/articles/like/{{article.id}}" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+</div> </p>
+			   
+            <span class="categories"><i class="icon-tag"></i>BLOGS YOU WILL LOVE</span>
+		   </div>
+
+         <div class="link-box">
+            
+		     <a href="/articles/all"> Other Blogs</a>
+         </div>
+      </div><!-- modal-01 End -->
+
+</div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
